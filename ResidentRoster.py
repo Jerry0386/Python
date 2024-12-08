@@ -196,11 +196,3 @@ def main():
 if __name__ == "__main__":
   main()
 
-# Things left to do
-
- 
-
-# Things that would be nice to add
-
-# lookup specific resident and show stay history
-# lookup residents by last name
