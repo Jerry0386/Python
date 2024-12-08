@@ -1,0 +1,30 @@
+--
+-- File generated with SQLiteStudio v3.4.4 on Sun Dec 8 09:15:02 2024
+--
+-- Text encoding used: System
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table: residentTable
+CREATE TABLE IF NOT EXISTS residentTable (RK INTEGER PRIMARY KEY UNIQUE NOT NULL, lastName TEXT NOT NULL, firstName TEXT NOT NULL, dateOfBirth TEXT NOT NULL);
+INSERT INTO residentTable (RK, lastName, firstName, dateOfBirth) VALUES (1, 'Allie', 'Jerry', '1986-03-10');
+INSERT INTO residentTable (RK, lastName, firstName, dateOfBirth) VALUES (2, 'Allie', 'Sara', '1986-09-04');
+INSERT INTO residentTable (RK, lastName, firstName, dateOfBirth) VALUES (3, 'Foxworthy', 'Jeff', '1958-09-06');
+INSERT INTO residentTable (RK, lastName, firstName, dateOfBirth) VALUES (4, 'Stamos', 'John', '1963-08-19');
+INSERT INTO residentTable (RK, lastName, firstName, dateOfBirth) VALUES (5, 'Reeves', 'Keanu', '1964-09-02');
+INSERT INTO residentTable (RK, lastName, firstName, dateOfBirth) VALUES (6, 'Swift', 'Taylor', '1989-12-13');
+
+-- Table: stayTable
+CREATE TABLE IF NOT EXISTS stayTable (SK INTEGER NOT NULL PRIMARY KEY UNIQUE, RK INTEGER NOT NULL REFERENCES residentTable (RK), arrivalDate TEXT NOT NULL, departDate TEXT, activeStay INTEGER NOT NULL DEFAULT (1));
+INSERT INTO stayTable (SK, RK, arrivalDate, departDate, activeStay) VALUES (1, 1, '2024-12-04', '2024-12-07', 0);
+INSERT INTO stayTable (SK, RK, arrivalDate, departDate, activeStay) VALUES (2, 2, '2024-12-04', '2024-12-07', 0);
+INSERT INTO stayTable (SK, RK, arrivalDate, departDate, activeStay) VALUES (3, 3, '2024-12-01', '2024-12-03', 0);
+INSERT INTO stayTable (SK, RK, arrivalDate, departDate, activeStay) VALUES (4, 4, '2024-12-05', '2024-12-08', 0);
+INSERT INTO stayTable (SK, RK, arrivalDate, departDate, activeStay) VALUES (5, 5, '2024-12-08', NULL, 1);
+INSERT INTO stayTable (SK, RK, arrivalDate, departDate, activeStay) VALUES (6, 3, '2024-12-08', NULL, 1);
+INSERT INTO stayTable (SK, RK, arrivalDate, departDate, activeStay) VALUES (7, 1, '2024-12-08', NULL, 1);
+INSERT INTO stayTable (SK, RK, arrivalDate, departDate, activeStay) VALUES (8, 2, '2024-12-08', NULL, 1);
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;
